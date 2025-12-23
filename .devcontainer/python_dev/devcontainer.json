@@ -46,7 +46,9 @@
                 "eamodio.gitlens",
                 "github.vscode-pull-request-github",
                 // PlantUML
-                "jebbs.plantuml"
+                "jebbs.plantuml",
+                // Python extensions
+                "ms-python.python"
             ]
         }
     }

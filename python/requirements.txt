@@ -2,6 +2,7 @@ advent-of-code-data
 advent-of-code-ocr
 
 pytest
+dotenv
 python-dotenv
 
 parse
