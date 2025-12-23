@@ -6,15 +6,21 @@ x-build: &build
   context: ../
   network: host
 
+x-volumes: &volumes
+  type: bind
+  source: ../
+  target: /home/dev/repo/
+
 x-volume-git: &volume_git
   type: bind
   source: ../.git/
   target: /home/dev/repo/.git/
 
+# Bind mount the python/ directory: using the name python to keep git path consistent
 x-volume-python: &volume_python
   type: bind
   source: ../python/
-  target: /home/dev/repo/
+  target: /home/dev/repo/python/
 
 services:
   aoc_python_dev:
@@ -28,7 +34,10 @@ services:
     <<: *setup
     # Mount git to have VCS info and python/ to have the code
     volumes:
-      - <<: *volume_git
-      - <<: *volume_python
+      - <<: *volumes
+    #  - <<: *volume_git
+    #  - <<: *volume_python
     environment:
-      - ZSH_THEME="powerlevel10k/powerlevel10k"
+      - ZSH_THEME=powerlevel10k/powerlevel10k
+      - TERM=xterm-256color
+      - GIT_DISCOVERY_ACROSS_FILESYSTEM=1
