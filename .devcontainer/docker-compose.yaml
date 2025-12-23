@@ -1,0 +1,34 @@
+x-setup: &setup
+  stdin_open: true
+  tty: true
+
+x-build: &build
+  context: ../
+  network: host
+
+x-volume-git: &volume_git
+  type: bind
+  source: ../.git/
+  target: /home/dev/repo/.git/
+
+x-volume-python: &volume_python
+  type: bind
+  source: ../python/
+  target: /home/dev/repo/
+
+services:
+  aoc_python_dev:
+    build:
+      <<: *build
+      dockerfile: .devcontainer/python_dev/python_dev.dockerfile
+      # Set build args for the base image
+      args:
+        VERSION: 3.14.2-slim-bookworm
+        IMAGE: python
+    <<: *setup
+    # Mount git to have VCS info and python/ to have the code
+    volumes:
+      - <<: *volume_git
+      - <<: *volume_python
+    environment:
+      - ZSH_THEME="powerlevel10k/powerlevel10k"

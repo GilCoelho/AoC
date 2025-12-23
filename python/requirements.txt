@@ -1,0 +1,10 @@
+advent-of-code-data
+advent-of-code-ocr
+
+pytest
+
+parse
+numpy
+
+colorama
+rich

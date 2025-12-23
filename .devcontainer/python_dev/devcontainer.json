@@ -1,0 +1,53 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.245.2/containers/docker-existing-docker-compose
+// If you want to run as a non-root user in the container, see .devcontainer/docker-compose.yml.
+{
+    // Super magic trick (https://github.com/microsoft/vscode-remote-release/issues/9302#issuecomment-1854476541)
+    // This is were to prevent the: "Dev Container Configuration '.devcontainer/devcontainer.json' file already exists."
+    // Comment, uncomment and try again
+    "initializeCommand": "echo Initialize....",
+    //"initializeCommand": "ls",
+
+    "name": "DEV-PYTHON-AOC",
+
+    // Update the 'dockerComposeFile' list if you have more compose files or use different names.
+    // The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
+    "dockerComposeFile": ["../docker-compose.yaml"],
+
+    // The 'service' property is the name of the service for the container that VS Code should
+    // use. Update this value and .devcontainer/docker-compose.yml to the real service name.
+    "service": "aoc_python_dev",
+    "runServices": ["aoc_python_dev"],
+
+    // The optional 'workspaceFolder' property is the path VS Code should open by default when
+    // connected. This is typically a file mount in .devcontainer/docker-compose.yml
+    "workspaceFolder": "/home/dev/repo",
+
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
+
+    // Uncomment the next line if you want to keep your containers running after VS Code shuts down.
+    // "shutdownAction": "none",
+
+    // Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
+    "remoteUser": "dev",
+
+    // VS Code properties
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                // Generic extensions
+                "cschlosser.doxdocgen",
+                "esbenp.prettier-vscode",
+                "shardulm94.trailing-spaces",
+                "gruntfuggly.todo-tree",
+                "spmeesseman.vscode-taskexplorer",
+                // Git extensions
+                "eamodio.gitlens",
+                "github.vscode-pull-request-github",
+                // PlantUML
+                "jebbs.plantuml"
+            ]
+        }
+    }
+}
