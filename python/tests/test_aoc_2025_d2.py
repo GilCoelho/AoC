@@ -25,8 +25,30 @@ def test_is_sequence_digits_twice():
     assert aoc.is_sequence_digits_twice(1312) is False
     assert aoc.is_sequence_digits_twice(1231123) is False
 
+def test_is_sequence_digits_repeated():
+    """Test is_sequence_digits_repeated function."""
+    assert aoc.is_sequence_digits_repeated(1212) is True
+    assert aoc.is_sequence_digits_repeated(123123) is True
+    assert aoc.is_sequence_digits_repeated(1234) is False
+    assert aoc.is_sequence_digits_repeated(12345) is False
+    assert aoc.is_sequence_digits_repeated(1111) is True
+    assert aoc.is_sequence_digits_repeated(22) is True
+    assert aoc.is_sequence_digits_repeated(7) is False
+    assert aoc.is_sequence_digits_repeated(99) is True
+    assert aoc.is_sequence_digits_repeated(1010) is True
+    assert aoc.is_sequence_digits_repeated(1312) is False
+    assert aoc.is_sequence_digits_repeated(1231123) is False
+    assert aoc.is_sequence_digits_repeated(2121212118) is False
+    assert aoc.is_sequence_digits_repeated(2121212121) is True
+
 def test_part1_from_page(example_data_from_page_d2p1):
     """Test part 1 with example data from AoC page."""
     ranges = aoc.parse(example_data_from_page_d2p1)
     result = aoc.part1(ranges)
     assert result == 1227775554
+
+def test_part2_from_page(example_data_from_page_d2p1):
+    """Test part 2 with example data from AoC page."""
+    ranges = aoc.parse(example_data_from_page_d2p1)
+    result = aoc.part2(ranges)
+    assert result == 4174379265

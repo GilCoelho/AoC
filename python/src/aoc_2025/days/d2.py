@@ -15,6 +15,26 @@ def is_sequence_digits_twice(num):
         mid = len(value) // 2
         return value[:mid] == value[mid:]
 
+def is_sequence_digits_repeated(num):
+    """Check if a sequence contains some sequence of digits repeated."""
+    value = str(num)
+    is_repeated = False
+
+    for i in range(1, len(value)):
+        is_section_repeated = True
+        # pick a section length i
+        section = value[:i]
+        for j in range(i, len(value), i):
+            if value[j:j+i] == section:
+                is_section_repeated &= True
+            else:
+                # break inner loop if no match
+                is_section_repeated &= False
+                break
+        is_repeated |= is_section_repeated
+
+    return is_repeated
+
 def parse(puzzle_input):
     """Parse input."""
 
@@ -38,7 +58,16 @@ def part1(ranges):
 
 def part2(ranges):
     """Solve part 2."""
-    pass
+    sum_of_invalid_ids = 0
+    for start, end in ranges:
+        start_num = int(start)
+        end_num = int(end)
+        for num in range(start_num, end_num + 1):
+            if is_sequence_digits_repeated(num):
+                sum_of_invalid_ids += num
+
+    print(f"The sum of all invalid product IDs is {sum_of_invalid_ids}.")
+    return sum_of_invalid_ids
 
 def main():
     puzzle_input = []
