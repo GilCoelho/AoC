@@ -37,12 +37,19 @@ def part1(ranges):
     for bank in ranges:
         total_joltage += bigger_combo_per_bank(bank, 2)
 
-    print(f"The total joltage is {total_joltage}.")
+    print(f"The total joltage is {total_joltage} with 2 per bank.")
     return total_joltage
 
 def part2(ranges):
     """Solve part 2."""
-    pass
+    total_joltage = 0
+    combo_size = 12
+
+    for bank in ranges:
+        total_joltage += bigger_combo_per_bank(bank, combo_size)
+
+    print(f"The total joltage is {total_joltage} with {combo_size} per bank.")
+    return total_joltage
 
 def main():
     puzzle_input = []
