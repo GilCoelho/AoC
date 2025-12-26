@@ -56,3 +56,11 @@ def test_part1_from_page(example_data_from_page_d4p1):
 
     assert result == 13
     assert new_map == expected_result
+
+def test_part2_from_page(example_data_from_page_d4p1):
+    """Test part 2 solution with example data from AoC page for day 4, part 2."""
+    grip_map = aoc.parse(example_data_from_page_d4p1)
+
+    result, last_map = aoc.part2(grip_map)
+
+    assert result == 43

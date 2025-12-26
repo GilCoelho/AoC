@@ -54,7 +54,30 @@ def part1(ranges):
 
 def part2(ranges):
     """Solve part 2."""
-    pass
+    new_map = [row.copy() for row in ranges]
+    removed_roll = "x"
+    roll = "@"
+    num_of_removed_rolls = 0
+
+    for _ in range(len(new_map)*len(new_map[0])):
+        prev_map = [row.copy() for row in new_map]
+        got_rolls_removed = False
+
+        for x in range(len(new_map)):
+            for y in range(len(new_map[0])):
+                element = new_map[x][y]
+                if element == roll:
+                    if is_movable_roll(prev_map, x, y):
+                        new_map[x][y] = removed_roll
+                        num_of_removed_rolls += 1
+                        got_rolls_removed = True
+
+        if not got_rolls_removed:
+            break
+
+    print("Number of removed rolls:", num_of_removed_rolls)
+
+    return num_of_removed_rolls, new_map
 
 def main():
     puzzle_input = []
