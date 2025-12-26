@@ -68,19 +68,19 @@ def test_dialer_class_wrap_negative(dialer_lower_limit):
 
     dialer.turn(-2)
     assert dialer.position() == 98
-    assert dialer.count_passings() == 1
+    assert dialer.count_passings() == 0
 
     dialer.turn(-100)
     assert dialer.position() == 98
-    assert dialer.count_passings() == 2
+    assert dialer.count_passings() == 1
 
     dialer.turn(-200)
     assert dialer.position() == 98
-    assert dialer.count_passings() == 4
+    assert dialer.count_passings() == 3
 
     dialer.turn(-1000)
     assert dialer.position() == 98
-    assert dialer.count_passings() == 14
+    assert dialer.count_passings() == 13
 
 def test_dialer_class_wrap_positive(dialer_upper_limit):
     """Test Dialer class positive move."""
@@ -175,6 +175,13 @@ def test_part2_from_page(example_data_from_page_d1p2):
     result = aoc.part2(dialer, turns)
     assert result == 6
 
+    turns.insert(0, 18)
+    result = aoc.part2(dialer, turns)
+    assert result == 9
+
+    result = aoc.part2(dialer, turns)
+    assert result == 12
+
     dialer = Dialer()
     result = aoc.part2(dialer, [1000])
     assert result == 10
@@ -182,3 +189,7 @@ def test_part2_from_page(example_data_from_page_d1p2):
     dialer = Dialer()
     result = aoc.part2(dialer, [-1000])
     assert result == 10
+
+    dialer = Dialer()
+    result = aoc.part2(dialer, [1000, -1000])
+    assert result == 20

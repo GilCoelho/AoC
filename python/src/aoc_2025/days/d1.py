@@ -34,6 +34,7 @@ def part2(entrance_safe, turns):
     """Solve part 2."""
     counting_position = 0
     count = 0
+    passages = 0
 
     for action in turns:
         entrance_safe.turn(action)
@@ -68,9 +69,11 @@ def main():
     turns = parse(puzzle_input)
 
     # solve part 1
+    print("Solving part 1...")
     entrance_safe_1 = Dialer()
     part1(entrance_safe_1, turns)
 
     # solve part 2
+    print("Solving part 2...")
     entrance_safe_2 = Dialer()
     part2(entrance_safe_2, turns)
